@@ -1,23 +1,37 @@
+import matplotlib.pyplot as plt
+
+
 def DDA(x1, y1, x2, y2):
     dx = x2 - x1
     dy = y2 - y1
 
-    steps = max(abs(dx), abs(dy))
+    steps = int(max(abs(dx), abs(dy)))
 
-    XInc = round(dx / steps)
-    YInc = round(dy / steps)
+    XInc = dx / steps
+    YInc = dy / steps
 
     x = x1
-    y = x2
+    y = y1
 
     points = []
 
     for _ in range(steps):
-        points.append((x, y))
+        points.append((round(x), round(y)))
         x += XInc
         y += YInc
 
     return points
 
-x1, y1, x2, y2 = map(int, input(f"Enter x1, y1, x2, y2: ").split(" "))
-print(DDA(x1, y1, x2, y2))
+
+if __name__ == "__main__":
+    x1, y1, x2, y2 = map(int, input(f"Enter x1, y1, x2, y2: ").split())
+    pixels = DDA(x1, y1, x2, y2)
+    
+    xs, ys = zip(*pixels)
+    plt.figure(figsize=(5, 5))
+    plt.scatter(xs, ys, c="red", s=50)
+    plt.plot(xs, ys, c="blue", linewidth=1)
+    plt.title("DDA Line")
+    plt.grid(True)
+    plt.axis("equal")
+    plt.show()

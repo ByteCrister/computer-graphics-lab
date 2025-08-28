@@ -1,0 +1,52 @@
+Bresenham’s Circle Drawing Algorithm
+===================================
+
+Steps:
+1. Input: center (xc, yc), radius r.
+2. Initialize:
+   x = 0
+   y = r
+   d = 3 - 2r   // decision parameter
+3. Repeat while x <= y:
+   - Plot all 8 symmetric points:
+     (xc + x, yc + y), (xc - x, yc + y),
+     (xc + x, yc - y), (xc - x, yc - y),
+     (xc + y, yc + x), (xc - y, yc + x),
+     (xc + y, yc - x), (xc - y, yc - x)
+
+   - If d < 0:
+       d = d + (4x + 6)
+   - Else:
+       d = d + 4(x - y) + 10
+       y = y - 1
+
+   - Increment x = x + 1
+4. End loop.
+5. Return all plotted points.
+
+
+Midpoint Circle Algorithm
+=========================
+
+Steps:
+1. Input: center (xc, yc), radius r.
+2. Initialize:
+   x = 0
+   y = r
+   d = 1 - r   // decision parameter
+3. Repeat while x <= y:
+   - Plot all 8 symmetric points:
+     (xc + x, yc + y), (xc - x, yc + y),
+     (xc + x, yc - y), (xc - x, yc - y),
+     (xc + y, yc + x), (xc - y, yc + x),
+     (xc + y, yc - x), (xc - y, yc - x)
+
+   - If d < 0:
+       d = d + (2x + 3)
+   - Else:
+       d = d + (2x - 2y + 5)
+       y = y - 1
+
+   - Increment x = x + 1
+4. End loop.
+5. Return all plotted points.

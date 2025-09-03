@@ -1,0 +1,44 @@
+For region 1,
+
+Step: 1
+initiate, 
+    x = 0
+    y = b
+    dx = 2b^2x
+    dy = 2a^2y
+
+Step: 2
+    initial decision parameter for region 1, 
+    p = b^2 - a^2b + 1/4 * a^2
+
+Step: 3
+    loop until dx < dy
+
+    update first, 
+    x++
+    dx = dx + 2b^2
+
+    if p < 0
+    p = p + 2b^2x + b^2
+    else
+    y--
+    p = p + 2b^x + b^2 - 2a^y
+
+
+For region 2,
+
+Step: 1
+    initial decision parameter for region 2,
+    p = b^2(x - 0.5)^2 + a^2(y-1)^2 - a^2b^2
+
+Step: 2
+    execute loop until y>= 0
+
+    y--
+
+    if p > 0
+    p = p - 2a^2y + a^2
+
+    else
+    x++
+    p = p + 2b^2x - 2a^2y + a^2
